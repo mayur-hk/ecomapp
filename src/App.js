@@ -10,12 +10,14 @@ import Cart from "./pages/Cart";
 import SingleProduct from "./pages/SingleProduct";
 import './App.css'
 import Footer from "./Component/Footer";
+import { ProductProvider } from "./contexts/productcontext";
 
 
 
 const App = () => {
 
   return (
+      <ProductProvider>
        <BrowserRouter >
           <Navbar />
           <Routes>
@@ -25,12 +27,11 @@ const App = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<Error />} />
             <Route path="/product" element={<Product />} />
-            <Route path="/singleProduct" element={<SingleProduct />} />
+            <Route path="/singleProduct/:id" element={<SingleProduct />} />
           </Routes>
           <Footer />
-       
-      </BrowserRouter>
-   
+        </BrowserRouter>
+    </ProductProvider>
   )
 };
 
