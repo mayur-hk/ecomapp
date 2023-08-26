@@ -6,6 +6,7 @@ import PageNavigate from '../Component/PageNavigate'
 import FormatPrice from '../helper/FormatPrice'
 import { TbTruckDelivery, TbReplace } from 'react-icons/tb';
 import { CgArrangeBack } from 'react-icons/cg';
+import Star from '../Component/Star'
 
 
 const API = 'https://api.pujakaitem.com/api/products'
@@ -38,8 +39,8 @@ const SingleProduct = () => {
           </div>
           <div className='col'>
             <h2>{name}</h2>
-            <p>{stars}</p>
-            <p>Reviews : {reviews}</p>
+            <Star stars= {stars} reviews= {reviews} />
+            
             <p>
               MRP : <del> <FormatPrice Price={price + 250000} /> </del>
             </p>
