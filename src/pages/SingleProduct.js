@@ -7,6 +7,7 @@ import FormatPrice from '../helper/FormatPrice'
 import { TbTruckDelivery, TbReplace } from 'react-icons/tb';
 import { CgArrangeBack } from 'react-icons/cg';
 import Star from '../Component/Star'
+import AddtoCart from '../Component/AddtoCart'
 
 
 const API = 'https://api.pujakaitem.com/api/products'
@@ -17,10 +18,8 @@ const SingleProduct = () => {
   const productcontext = useContext(productContext);
   const { getSingleProduct, SingleProduct, isLoading, isSingleError } = productcontext;
 
-  const { id: alice, name, price, description, image, stock, reviews, stars, company, color } = SingleProduct;
-
-
-  
+  const { id: alice, name, price, description, image, stock, reviews, stars, company } = SingleProduct;
+    
   useEffect(() => {
     getSingleProduct(`${API}?id=${id}`);
   }, [])
@@ -71,6 +70,7 @@ const SingleProduct = () => {
             <p>Id : <span className='fw-medium'>{id} </span></p>
             <p>Brand : <span className='fw-medium'> {company}</span></p>
             <hr />
+            {stock>0 && <AddtoCart product={SingleProduct} />}
 
 
           </div>
