@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from "../images/logo.jpg"
-import {BsCart3} from "react-icons/bs";
+import {BsCart3} from "react-icons/bs"
+import { NavLink } from 'react-router-dom'
 
 
 
@@ -33,7 +34,9 @@ const Navbar = () => {
                         </ul> 
                     </div>
                     <div className='position-relative mr-5'>
+                        <NavLink to="./cart">
                         <BsCart3 style={{width: 30, height: 30}} />
+                        </NavLink>
                         <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">5</span>
                     </div>
                 </div>

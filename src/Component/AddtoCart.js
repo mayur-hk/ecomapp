@@ -1,10 +1,20 @@
 import React from 'react'
 import { useState } from 'react';
 import {FaCheck} from 'react-icons/fa'
+import TooggleAmount from './TooggleAmount';
 
 const AddtoCart = ({ product }) => {
-    const { colors } = product;
+    const { colors, stock } = product;
     const [Color, setColor] = useState(colors[0])
+    const [Quantity, setQuantity] = useState(1)
+
+    const increase = () => {
+        {stock > Quantity ? setQuantity (Quantity + 1) : setQuantity(stock)  }
+    }
+
+    const decrease = () => {
+        {Quantity > 1 ? setQuantity(Quantity - 1) : setQuantity(1) }
+    }
 
     return (
         <div>
@@ -18,11 +28,7 @@ const AddtoCart = ({ product }) => {
                     </button>
                 })}
             </div>
-            <div>
-                <button className="btn btn-primary fs-4"> + </button>
-                <button className="btn btn-primary fs-4"> - </button>
-                
-            </div>
+           <TooggleAmount quantity={Quantity} increasevalue={increase} decreasevalue={decrease} />
         </div>
     )
 }

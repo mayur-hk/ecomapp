@@ -7,7 +7,7 @@ const FeatureP = (currele) => {
 
     return (
         <>
-            <div className="col d-flex justify-content-around">
+            <div className="col d-flex justify-content-around my-2">
                 <NavLink to={`/singleProduct/${id}`} style={{ textDecoration: 'none' }}>
                 <div className="card" style={{ width: '18rem' }}>
                     <div className="position-relative">
