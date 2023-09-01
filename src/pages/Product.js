@@ -1,16 +1,13 @@
 import React, { useContext } from 'react'
-import { productContext } from '../contexts/productcontext'
 import Sort from '../Component/Sort'
 import ProductList from '../Component/Productlist'
 import Filtersection from '../Component/Filtersection'
+import { Filtercontext } from '../contexts/filtercontext'
 
 
 const Product = () => {
 
-  const data = useContext(productContext)
-  const { products } = data
-
-
+  
   return (
     <>
       <div className='container mb-5 '>
@@ -22,7 +19,7 @@ const Product = () => {
             <div>
               <Sort />
             </div>
-            <ProductList products={products} />
+            <ProductList />
           </div>
         </div>
       </div>

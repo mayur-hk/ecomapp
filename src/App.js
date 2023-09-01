@@ -11,14 +11,16 @@ import SingleProduct from "./pages/SingleProduct";
 import './App.css'
 import Footer from "./Component/Footer";
 import { ProductProvider } from "./contexts/productcontext";
+import { FiltercontextProvider } from "./contexts/filtercontext"
 
 
 
 const App = () => {
 
   return (
-      <ProductProvider>
-       <BrowserRouter >
+    <ProductProvider>
+      <FiltercontextProvider>
+        <BrowserRouter >
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -31,6 +33,7 @@ const App = () => {
           </Routes>
           <Footer />
         </BrowserRouter>
+      </FiltercontextProvider>
     </ProductProvider>
   )
 };

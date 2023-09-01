@@ -17,7 +17,7 @@ const InitialState = {
 
 const ProductProvider = ({ children }) => {
 
-    const [state, dispatch] = useReducer(reducer, InitialState)
+    const [state, dispatch] = useReducer (reducer, InitialState)
 
     //API-1 for the get products
 
