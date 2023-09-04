@@ -5,8 +5,8 @@ import { Filtercontext } from '../contexts/filtercontext'
 const Sort = () => {
 
   const context = useContext(Filtercontext)
-  const { filterProduct, isGridview, gridView, listView } = context
-  
+  const { filterProduct, isGridview, gridView, listView, sorting } = context
+
 
   return (
     <div className='container mt-3'>
@@ -24,16 +24,12 @@ const Sort = () => {
           {filterProduct.length} Product available
         </div>
         <div>
-          <div className="dropdown">
-            <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Sort items
-            </button>
-            <ul className="dropdown-menu">
-              <li><a className="dropdown-item" href="#">Action</a></li>
-              <li><a className="dropdown-item" href="#">Another action</a></li>
-              <li><a className="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </div>
+          <select className="form-select" id="sort" onClick={(e)=>{sorting(e)}}>
+            <option value='highest'>highest-lowest</option>
+            <option value='lowest'>lowest-highest</option>
+            <option value='a-z'>sort(A-Z)</option>
+            <option value='z-a'>sort(Z-A)</option>
+          </select>
         </div>
       </div>
     </div>
