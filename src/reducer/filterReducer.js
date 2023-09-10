@@ -1,5 +1,6 @@
 
 const filterReducer = (state, action) => {
+    console.log("🚀 ~ file: filterReducer.js:3 ~ filterReducer ~ state:", state)
     switch (action.type) {
         case "LOAD_FILTER_PRODUCT":
             return {
@@ -32,6 +33,7 @@ const filterReducer = (state, action) => {
         case "SORTING_PRODUCTS":
             let tempFiltedata;
             const newData = [...state.filterProduct]
+            
             switch (state.SortingValue) {
                 case "a-z":
                     tempFiltedata = newData.sort((a, b) => a.name.localeCompare(b.name));
@@ -82,13 +84,25 @@ const filterReducer = (state, action) => {
 
         const {allProducts} = state;
         let tempfilterProduct = [...allProducts]
-
-        const {text} = state.filters
-
+                        
+        const {text, category} = state.filters
+                
         if(text){
         tempfilterProduct = tempfilterProduct.filter((element)=>{
             return element.name.toLowerCase().includes(text)
         })}
+
+        if (category !== "all") {
+             tempfilterProduct = tempfilterProduct.filter((element)=>{
+                return element.category === category })
+            }
+           
+            
+        // if(category){
+        //     tempfilterProduct = tempfilterProduct.filter((element)=>{
+        //         return element.category === category    
+        //     })
+        // }
 
         return{
             ...state,

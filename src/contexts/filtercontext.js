@@ -10,7 +10,9 @@ const initialState = {
     isGridview: true,
     SortingValue: 'lowest',
     filters: {
-        text: ""
+        text: "",
+        category: "all",
+        company: "all"
     }
 }
 
@@ -19,8 +21,7 @@ export const FiltercontextProvider = ({ children }) => {
 
     const productcontext = useContext(productContext)
     const { products } = productcontext;
-    console.log("🚀 ~ file: filtercontext.js:19 ~ FiltercontextProvider ~ products:", products)
-
+    
     const [state, dispatch] = useReducer(filterreducer, initialState)
 
 
