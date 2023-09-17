@@ -33,7 +33,7 @@ const filterReducer = (state, action) => {
         case "SORTING_PRODUCTS":
             let tempFiltedata;
             const newData = [...state.filterProduct]
-            
+
             switch (state.SortingValue) {
                 case "a-z":
                     tempFiltedata = newData.sort((a, b) => a.name.localeCompare(b.name));
@@ -64,50 +64,50 @@ const filterReducer = (state, action) => {
             //     tempFiltedata = newData.sort((a,b)=> b.price - a.price )
             // }
 
-        return {
+            return {
                 ...state,
                 filterProduct: tempFiltedata
             }
 
-        case "UPDATE_FILTER_VALUE" :
-            const {name, value} = action.payload
+        case "UPDATE_FILTER_VALUE":
+            const { name, value } = action.payload
+            console.log("🚀 ~ file: filterReducer.js:74 ~ filterReducer ~ value:", value)
             return {
                 ...state,
-                filters:{
+                filters: {
                     ...state.filters,
-                    [name]:value
+                    [name]: value
                 }
 
             }
+
+        case "FILTER_PRODUCTS":
+
+            const { allProducts } = state;
+            let tempfilterProduct = [...allProducts]
+
+            const { text, category, company } = state.filters
             
-        case "FILTER_PRODUCTS" :
-
-        const {allProducts} = state;
-        let tempfilterProduct = [...allProducts]
-                        
-        const {text, category} = state.filters
-                
-        if(text){
-        tempfilterProduct = tempfilterProduct.filter((element)=>{
-            return element.name.toLowerCase().includes(text)
-        })}
-
-        if (category !== "all") {
-             tempfilterProduct = tempfilterProduct.filter((element)=>{
-                return element.category === category })
+            if (text) {
+                tempfilterProduct = tempfilterProduct.filter((element) => {
+                    return element.name.toLowerCase().includes(text)
+                })
             }
-           
-            
-        // if(category){
-        //     tempfilterProduct = tempfilterProduct.filter((element)=>{
-        //         return element.category === category    
-        //     })
-        // }
 
-        return{
-            ...state,
-            filterProduct: tempfilterProduct
-        }
+            if (category !== "all") {
+                tempfilterProduct = tempfilterProduct.filter((element) => {
+                    return element.category === category
+                })
+            }
+            if (company !== "all") {
+                tempfilterProduct = tempfilterProduct.filter((element) => {
+                    return element.company === company
+                })
+            }
+            return {
+                ...state,
+                filterProduct: tempfilterProduct
+            }
 
         default:
             return { ...state }

@@ -12,9 +12,11 @@ const initialState = {
     filters: {
         text: "",
         category: "all",
-        company: "all"
+        company: "all",
+        colors: "all"
     }
 }
+console.log("🚀 ~ file: filtercontext.js:18 ~ initialState:", initialState)
 
 
 export const FiltercontextProvider = ({ children }) => {
@@ -41,7 +43,7 @@ export const FiltercontextProvider = ({ children }) => {
 
         let name = e.target.name;
         let value = e.target.value
-
+        
         return dispatch({type: "UPDATE_FILTER_VALUE", payload: {name, value}})
     }
 

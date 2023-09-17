@@ -4,17 +4,18 @@ import { Filtercontext } from '../contexts/filtercontext'
 
 const Filtersection = () => {
   const context = useContext(Filtercontext);
-  const { filters: { text, category }, updateFilterproduct, allProducts } = context;
+  const { filters: { text }, updateFilterproduct, allProducts } = context;
 
   const getUniqueData = (data, type) => {
     let newval = data.map((element) => {
       return element[type]
     })
-    return ["All", ... new Set(newval)]
+    return ["all", ...new Set(newval)]
   }
 
-  const getCategorydata = getUniqueData(allProducts, "category")
-  
+  const getCategorydata = getUniqueData(allProducts, "category");
+  const getCompanydata = getUniqueData(allProducts, "company")
+
 
 
   return (
@@ -31,16 +32,29 @@ const Filtersection = () => {
             Category
           </h4>
           <div className='d-flex flex-column'>
-          {
-            getCategorydata.map((currElem, index) => { 
-              return (
-              <button type='button' key={index} className='btn' style={{width: "8rem", textAlign : "left"}} name='category' value={currElem} onClick={updateFilterproduct}>
-
-                {currElem}
-              </button>
-              )
-            })
-          }
+            {
+              getCategorydata.map((currElem, index) => {
+                return (
+                  <button type='button' key={index} className='btn' style={{ width: "8rem", textAlign: "left" }} name="category" value={currElem} onClick={updateFilterproduct}>
+                    {currElem}
+                  </button>
+                )
+              })
+            }
+          </div>
+          <h4>
+            Company
+          </h4>
+          <div>
+            <form>
+              <select className="form-select" name="company" id="company" onClick={(e) => { updateFilterproduct(e) }}>
+                {
+                  getCompanydata.map((currElem, index) => {
+                    return (<option key={index} name="company" value={currElem}>{currElem}</option>)
+                  })
+                }
+              </select>
+            </form>
           </div>
         </div>
       </div>
