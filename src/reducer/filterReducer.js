@@ -1,6 +1,6 @@
 
 const filterReducer = (state, action) => {
-    console.log("🚀 ~ file: filterReducer.js:3 ~ filterReducer ~ state:", state)
+    
     switch (action.type) {
         case "LOAD_FILTER_PRODUCT":
             return {

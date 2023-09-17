@@ -16,7 +16,6 @@ const initialState = {
         colors: "all"
     }
 }
-console.log("🚀 ~ file: filtercontext.js:18 ~ initialState:", initialState)
 
 
 export const FiltercontextProvider = ({ children }) => {

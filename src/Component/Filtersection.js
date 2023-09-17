@@ -10,11 +10,17 @@ const Filtersection = () => {
     let newval = data.map((element) => {
       return element[type]
     })
+    if(type === "colors"){
+     // newval = [...new Set([].concat(...newval))]
+      newval = newval.flat();
+    }
     return ["all", ...new Set(newval)]
   }
 
   const getCategorydata = getUniqueData(allProducts, "category");
-  const getCompanydata = getUniqueData(allProducts, "company")
+  const getCompanydata = getUniqueData(allProducts, "company");
+  const getColors = getUniqueData(allProducts, "colors")
+  console.log("🚀 ~ file: Filtersection.js:19 ~ Filtersection ~ getColors:", getColors)
 
 
 
